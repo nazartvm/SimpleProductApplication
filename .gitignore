@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ProductsApplication/bin/Debug/net6.0
+/.vscode
+/.vs/ProductsApplication
+/ProductsApplication/obj
+/ProductsApplication/Properties
+/docker-compose.yml
+/docker-compose.debug.yml

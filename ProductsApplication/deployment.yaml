@@ -1,0 +1,35 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productapplication-deployment
+  labels:
+    app: productapplication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productapplication
+  template:
+    metadata:
+      labels:
+        app: productapplication
+    spec:
+      containers:
+      - name: mvc
+        image: nazartvm/productapplication
+        ports:
+        - containerPort: 5147
+        env:
+            - name: ConnectionStrings__ProductsApplicationContext
+              value: Server=mssql-deployment;Database=ProductsApplication.Data;User Id=sa;Password=Aktrea123!;MultipleActiveResultSets=true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productapplication-service
+spec:  
+  ports:
+  - port: 5147
+  type: LoadBalancer
+  selector:
+    app: productapplication
